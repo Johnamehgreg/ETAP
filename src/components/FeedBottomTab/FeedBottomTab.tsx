@@ -9,9 +9,12 @@ import { Octicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
 
+interface Props {
+    item: any
+}
 
 
-const FeedBottomTab = () => {
+const FeedBottomTab:React.FC<Props> = ({item}) => {
     return (
         <View
             style={styles.container}
@@ -71,7 +74,7 @@ const FeedBottomTab = () => {
             <Text
             style={styles.viewText}
             >
-                20,100 views
+                ${item.price}
             </Text>
         </View>
     )

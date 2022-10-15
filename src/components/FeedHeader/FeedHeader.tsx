@@ -8,9 +8,10 @@ import Scale,{verticalScale} from '../../constants/Scale'
 
 interface Props {
     onMenuPress: () => void;
+    item:any
 }
 
-const FeedHeader:React.FC<Props> = ({onMenuPress}) => {
+const FeedHeader:React.FC<Props> = ({onMenuPress, item}) => {
 
     return (
         <View
@@ -19,12 +20,12 @@ const FeedHeader:React.FC<Props> = ({onMenuPress}) => {
             <View
                 style={styles.row}
             >
-                <FeedAvatar imageUrl='https://i.pinimg.com/474x/cf/bd/c7/cfbdc7d6cde8156979c351f6dea36be0.jpg' />
+                <FeedAvatar imageUrl={item?.image} />
 
                 <View
                     style={styles.feednameWrapper}
                 >
-                    <Text>bbhausa</Text>
+                    <Text>{item?.title}</Text>
                 </View>
             </View>
 

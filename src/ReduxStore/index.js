@@ -1,0 +1,1 @@
+export {storeProduct} from './products/storeProduct'
