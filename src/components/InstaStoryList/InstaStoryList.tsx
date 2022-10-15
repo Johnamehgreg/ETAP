@@ -4,6 +4,8 @@ import { styles } from './InstaStoryStyles'
 import { LinearGradient } from 'expo-linear-gradient';
 import Scale from '../../constants/Scale';
 import { Feather } from '@expo/vector-icons';
+import { useDispatch, useSelector } from 'react-redux'
+
 
 
 
@@ -34,7 +36,6 @@ export default InstaStoryList
 
 
 const InstaStoryListRender = (props: { imageUrl: string, name: string }) => {
-    console.log(props)
     return (
         <TouchableOpacity
             style={styles.container}
