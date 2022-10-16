@@ -4,7 +4,9 @@ import React from 'react'
 import Scale from '../constants/Scale';
 import HomeScreen from '../screen/HomeScreen/HomeScreen';
 import { MaterialIcons } from '@expo/vector-icons';
-import { styles } from './DashboardStyles';
+import { Octicons } from '@expo/vector-icons';
+import { AntDesign} from '@expo/vector-icons';
+import { styles } from './BottomTabStyles';
 import FavouriteScreen from '../screen/FavouriteScreen/FavouriteScreen';
 
 
@@ -20,18 +22,13 @@ const Dashboard = () => {
   return (
 
     <Navigator
+      tabBar={props => <MyTabBar {...props} />}
+
       screenOptions={{
-        tabBarActiveTintColor: "black",
-        tabBarInactiveTintColor: 'rgba(168, 168, 168, 1)',
-        tabBarLabelStyle: {
-          marginBottom: -2,
-          fontSize: Scale(12),
-        },
 
         tabBarStyle: {
-          backgroundColor: "white",
-          height: Scale(40),
-          position: 'absolute',
+          backgroundColor: "red",
+          height: Scale(60),
           //  paddingTop:10
         },
         headerShown: false,
@@ -39,20 +36,12 @@ const Dashboard = () => {
       }}
     >
       <Screen
-        options={{
-          tabBarLabel: 'Profile',
 
-          //tabBarBadge: 3,
-        }}
         component={HomeScreen} name='Home' />
       <Screen
-        options={{
-          tabBarLabel: 'Profile',
 
-          //tabBarBadge: 3,
-        }}
         component={FavouriteScreen} name='Favourite' />
-      
+
     </Navigator>
   )
 }
@@ -61,8 +50,8 @@ const Dashboard = () => {
 
 function MyTabBar({ state, descriptors, navigation }) {
   return (
-    <View style={{ flexDirection: 'row' }}>
-      {state.routes.map((route: any, index: any) => {
+    <View style={styles.container}>
+      {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
@@ -95,52 +84,39 @@ function MyTabBar({ state, descriptors, navigation }) {
 
         return (
           <TouchableOpacity
-            key={route.key}
             accessibilityRole="button"
             accessibilityState={isFocused ? { selected: true } : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={styles.container}
           >
             {
-              route.name === 'se' && (
+              label === 'Home' && (
                 <>
-                  {
-                    isFocused ?
-                      <MaterialIcons name="home-filled" size={Scale(30)} color="black" />
-                      :
-                      <Text>Hello</Text>
-                  }
-                </>
 
+                {
+                  isFocused ?
+                  <MaterialIcons name='home-filled' size={Scale(32)} />
+                  :
+                  <Octicons name='home' size={Scale(28)} />
+
+                }
+                
+                </>
               )
             }
             {
-              route.name === 'Home' && (
+              label === 'Favourite' && (
                 <>
                   {
-                    isFocused ?
-                      <MaterialIcons name="home-filled" size={Scale(30)} color="black" />
-                      :
-                      <Text>Hello</Text>
-                  }
-                </>
+                  isFocused ?
+                  <AntDesign name='heart' size={Scale(30)} />
+                  :
+                  <AntDesign name='hearto' size={Scale(30)} />
 
-              )
-            }
-            {
-              route.name === 'Search' && (
-                <>
-                  {
-                    isFocused ?
-                      <MaterialIcons name="home-filled" size={Scale(30)} color="black" />
-                      :
-                      <Text>Hello</Text>
-                  }
+                }
                 </>
-
               )
             }
 

@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { GetUser } from '../../queryFunctionHook/main/usersQuery';
 import { storeUser } from '../../ReduxStore';
+import InstaStory from '../InstaStory/InstaStory';
 
 
 
@@ -59,8 +60,14 @@ export default InstaStoryList
 
 
 const InstaStoryListRender = (props: { item:any }) => {
+    const [showStory, setshowStory] = useState(false)
+
+    const handleShowStory =(value:boolean) => {
+        setshowStory(value)
+    }
     return (
         <TouchableOpacity
+            onPress={() => setshowStory(true)}
             style={styles.container}
         >
             <LinearGradient
@@ -80,6 +87,11 @@ const InstaStoryListRender = (props: { item:any }) => {
             >
                 {props.item.username}
             </Text>
+
+            <InstaStory 
+            showStory={showStory}
+            handleShowStory={handleShowStory}
+             />
         </TouchableOpacity>
     )
 }

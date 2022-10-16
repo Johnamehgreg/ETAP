@@ -3,7 +3,7 @@ import { View, StatusBar, Text, Easing } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'
-import Dashboard from './Dashboard'
+import Dashboard from './BottomTab'
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 import DetailScreen from '../screen/DetailScreen/DetailScreen'
 import HomeScreen from '../screen/HomeScreen/HomeScreen'
@@ -30,7 +30,7 @@ const RouteNavigation = () => {
     <NavigationContainer>
       <StatusBar backgroundColor={"white"} barStyle="dark-content" />
       <Navigator
-        initialRouteName="dashbord"
+        initialRouteName="botttomTab"
         screenOptions={{
           cardStyle: { backgroundColor: 'white' },
 
@@ -47,15 +47,13 @@ const RouteNavigation = () => {
           headerShown: false
         }}
       >
-        <Screen name='dashbord' component={Dashboard} />
+        <Screen name='botttomTab' component={Dashboard} />
         <Screen
         sharedElements={(route, otherRoute, showing) => {
           return [
             {
               id: route.params.item.id,
               animation: 'fade',
-              // resize: 'clip'
-              // align: ''left-top'
             }
           ]
         }}

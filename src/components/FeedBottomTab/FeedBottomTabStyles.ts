@@ -44,6 +44,10 @@ export const styles = StyleSheet.create({
     viewText:{
         fontSize:Scale(10),
         fontWeight:'700'
+    },
+
+    likeIcon:{
+        
     }
 
    

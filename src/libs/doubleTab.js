@@ -37,7 +37,8 @@ export default class DoubleClick extends Component {
 
   render() {
     return (
-      <TouchableOpacity 
+      <TouchableOpacity
+      style={{position:'relative'}} 
       onPress={this._onPress}>
         {this.props.children}
       </TouchableOpacity>

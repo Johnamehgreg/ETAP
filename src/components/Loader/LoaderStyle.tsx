@@ -1,15 +1,14 @@
 import { StyleSheet, Dimensions } from 'react-native'
-import Scale from '../constants/Scale'
+import Scale, { verticalScale } from '../../constants/Scale'
+
 
 
 
 
 export const styles = StyleSheet.create({
    container:{
-    height:Scale(50),
-    width:'100%',
-    flexDirection:'row',
+    flex: 1,
     alignItems: 'center',
-    justifyContent:'space-around'
+    justifyContent: 'center',
    }
 })

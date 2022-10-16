@@ -19,5 +19,9 @@ export const styles = StyleSheet.create({
         color:'#000',
         fontSize:Scale(25),
         fontWeight:'600'
+    },
+
+    emptyText:{
+        fontSize:Scale(13),
     }
 })

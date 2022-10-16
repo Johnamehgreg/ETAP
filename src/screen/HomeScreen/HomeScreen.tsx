@@ -3,6 +3,7 @@ import React from 'react'
 import Header from "../../components/Header/Header"
 import InstaStoryList from "../../components/InstaStoryList/InstaStoryList"
 import FeedList from "../../components/FeedList/FeedList"
+import Loader  from "../../components/Loader/Loader"
 import FeedSkeleton from "../../components/FeedSkeleton/FeedSkeleton"
 import { styles } from './HomeStyles'
 import { GetProductQuery } from '../../queryFunctionHook/main/productQuery'
@@ -15,7 +16,7 @@ interface Props {
   navigation: any
 }
 
-const HomeScreen:React.FC<Props> = ({navigation}) => {
+const HomeScreen: React.FC<Props> = ({ navigation }) => {
 
   const [isloading, setisloading] = useState(false)
 
@@ -28,9 +29,9 @@ const HomeScreen:React.FC<Props> = ({navigation}) => {
 
   const checkDataFetched = () => {
     if (isFetched && isSuccess) {
-      let newList = productData.map((item:any)=> {
-        return {...item, is_Like: false}
-    })
+      let newList = productData.map((item: any) => {
+        return { ...item, is_Like: false }
+      })
       dispatch(storeProduct(newList))
 
     }
@@ -42,17 +43,30 @@ const HomeScreen:React.FC<Props> = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      
+
       <Header />
 
-      {/* <FeedSkeleton /> */}
-      
-      <FlatList
-        bounces={false}
-        ListHeaderComponent={() => <InstaStoryList />}
-        data={productList}
-        renderItem={({ item }) => <FeedList navigation={navigation} item={item} />}
-      />
+
+      {
+        isFetched ?
+          <FlatList
+            bounces={false}
+            keyExtractor={(item: any) => item.key}
+            ListHeaderComponent={() => <InstaStoryList />}
+            data={productList}
+            renderItem={({ item }) => <FeedList navigation={navigation} item={item} />}
+          />
+          :
+
+          <Loader />
+
+          
+
+
+
+      }
+
+
     </View>
   )
 }

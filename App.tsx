@@ -7,12 +7,13 @@ import store, { persistor } from './src/ReduxStore/store';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
+import React from 'react';
 
 
 
 const queryClient = new QueryClient();
 
-const App:React.FC = () => {
+export const App = () => {
 
 
   return (
