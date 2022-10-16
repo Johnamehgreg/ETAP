@@ -8,6 +8,7 @@ import { createSharedElementStackNavigator } from 'react-navigation-shared-eleme
 import DetailScreen from '../screen/DetailScreen/DetailScreen'
 import HomeScreen from '../screen/HomeScreen/HomeScreen'
 import FavouriteScreen from '../screen/FavouriteScreen/FavouriteScreen'
+import SplashScreen from '../screen/SlashScreen/SplashScreen'
 
 
 const closeConfig = {
@@ -30,7 +31,7 @@ const RouteNavigation = () => {
     <NavigationContainer>
       <StatusBar backgroundColor={"white"} barStyle="dark-content" />
       <Navigator
-        initialRouteName="botttomTab"
+        initialRouteName="splash_screen"
         screenOptions={{
           cardStyle: { backgroundColor: 'white' },
 
@@ -60,6 +61,7 @@ const RouteNavigation = () => {
         name='detail_screen' 
         component={DetailScreen} />
         <Screen name='home_screen' component={HomeScreen} />
+        <Screen name='splash_screen' component={SplashScreen} />
         <Screen name='favourite_screen' component={FavouriteScreen} />
       </Navigator>
     </NavigationContainer>

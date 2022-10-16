@@ -1,10 +1,24 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, ActivityIndicator } from 'react-native'
+import React,{useEffect} from 'react'
+import { styles } from './SplashScreenStyle'
+import Scale, { verticalScale } from '../../constants/Scale'
 
-const SplashScreen = () => {
+
+interface Props {
+  navigation:any
+}
+
+const SplashScreen:React.FC<Props> = ({navigation}) => {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate('botttomTab')
+    }, 3000)
+  }, [])
+  
   return (
-    <View>
-      <Text>splashScreen</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>Etap</Text>
+      <ActivityIndicator size={Scale(35)} color="#000" />
     </View>
   )
 }

@@ -14,8 +14,10 @@ interface Props {
 const FavouriteScreen = ({navigation}) => {
     const productList = useSelector((state: any) => state.productList.data)
     const favorites = productList.filter((item:any) => item.is_Like === true)
-
+    
   return (
+
+    
     <View
     style={styles.container}
     >

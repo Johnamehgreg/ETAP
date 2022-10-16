@@ -1,9 +1,9 @@
-import { View, StatusBar, Text, FlatList } from 'react-native'
+import { View, StatusBar, BackHandler, Alert, Text, FlatList } from 'react-native'
 import React from 'react'
 import Header from "../../components/Header/Header"
 import InstaStoryList from "../../components/InstaStoryList/InstaStoryList"
 import FeedList from "../../components/FeedList/FeedList"
-import Loader  from "../../components/Loader/Loader"
+import Loader from "../../components/Loader/Loader"
 import FeedSkeleton from "../../components/FeedSkeleton/FeedSkeleton"
 import { styles } from './HomeStyles'
 import { GetProductQuery } from '../../queryFunctionHook/main/productQuery'
@@ -37,6 +37,10 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
     }
   }
 
+
+
+
+
   useEffect(() => {
     checkDataFetched()
   }, [productData])
@@ -60,7 +64,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
 
           <Loader />
 
-          
+
 
 
 

@@ -57,7 +57,7 @@ const FeedList: React.FC<Props> = ({ item, navigation }) => {
                         onLikeAnimated()
                     }
                 }}
-                delay={50}
+                delay={200}
             >
                 <Animated.View
                 style={[styles.likeIcon, {opacity}  ]}
