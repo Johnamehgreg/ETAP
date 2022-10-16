@@ -16,10 +16,6 @@ export const GetUser = () => {
     let userData = data?.data
 
 
-   
-
-
-
 
 
     return {

@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react'
 import Scale from '../constants/Scale';
 import HomeScreen from '../screen/HomeScreen/HomeScreen';
-import SplashScreen from '../screen/SlashScreen/SplashScreen';
 import { MaterialIcons } from '@expo/vector-icons';
 import { styles } from './DashboardStyles';
+import FavouriteScreen from '../screen/FavouriteScreen/FavouriteScreen';
 
 
 
@@ -20,7 +20,6 @@ const Dashboard = () => {
   return (
 
     <Navigator
-      tabBar={props => <MyTabBar {...props} />}
       screenOptions={{
         tabBarActiveTintColor: "black",
         tabBarInactiveTintColor: 'rgba(168, 168, 168, 1)',
@@ -41,20 +40,19 @@ const Dashboard = () => {
     >
       <Screen
         options={{
-          // tabBarLabel: 'Profile',
+          tabBarLabel: 'Profile',
 
           //tabBarBadge: 3,
         }}
         component={HomeScreen} name='Home' />
       <Screen
         options={{
-          // tabBarLabel: 'Profile',
+          tabBarLabel: 'Profile',
 
           //tabBarBadge: 3,
         }}
-        component={SplashScreen} name='Search' />
-
-
+        component={FavouriteScreen} name='Favourite' />
+      
     </Navigator>
   )
 }
@@ -121,6 +119,19 @@ function MyTabBar({ state, descriptors, navigation }) {
             }
             {
               route.name === 'Home' && (
+                <>
+                  {
+                    isFocused ?
+                      <MaterialIcons name="home-filled" size={Scale(30)} color="black" />
+                      :
+                      <Text>Hello</Text>
+                  }
+                </>
+
+              )
+            }
+            {
+              route.name === 'Search' && (
                 <>
                   {
                     isFocused ?

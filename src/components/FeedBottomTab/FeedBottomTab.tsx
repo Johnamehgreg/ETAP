@@ -7,6 +7,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import Scale from '../../constants/Scale';
 import { Octicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { onLike } from '../../services/appServices'
+
 
 
 interface Props {
@@ -14,7 +16,7 @@ interface Props {
 }
 
 
-const FeedBottomTab:React.FC<Props> = ({item}) => {
+const FeedBottomTab: React.FC<Props> = ({ item }) => {
     return (
         <View
             style={styles.container}
@@ -25,18 +27,15 @@ const FeedBottomTab:React.FC<Props> = ({item}) => {
                 <View
                     style={styles.row}>
                     <TouchableOpacity
+                        onPress={() => onLike(item?.id)}
                         style={[styles.icons]}
                     >
-                        {/* <FontAwesome name="heart" size={24} color="black" /> */}
-                        {/* <FontAwesome
-                            name="heart-o"
-                            size={Scale(24)}
-                            color="black" /> */}
-
+                    
                         <AntDesign
-                            name="hearto"
+                            name={item.is_Like ? 'heart': 'hearto'}
                             size={Scale(24)}
-                            color="black" />
+                            color={item.is_Like ? 'red': 'black'} />
+
                     </TouchableOpacity>
 
 
@@ -72,7 +71,7 @@ const FeedBottomTab:React.FC<Props> = ({item}) => {
             </View>
 
             <Text
-            style={styles.viewText}
+                style={styles.viewText}
             >
                 ${item.price}
             </Text>

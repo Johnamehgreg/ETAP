@@ -12,15 +12,7 @@ export const GetProductQuery = () => {
             () => apis.product.getProduct()
         )
 
-
     let productData = data?.data
-
-
-   
-
-
-
-
 
     return {
         productData,

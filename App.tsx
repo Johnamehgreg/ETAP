@@ -19,15 +19,12 @@ const App:React.FC = () => {
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <SafeAreaView style={styles.container}>
-            <StatusBar backgroundColor={"white"} barStyle="dark-content" />
-            <Text></Text>
-            <Text></Text>
-            <Text></Text>
+          <View style={styles.container}>
+            
             <RouteNavigation />
 
 
-          </SafeAreaView>
+          </View>
         </PersistGate>
       </Provider>
 

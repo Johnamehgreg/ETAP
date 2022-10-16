@@ -14,8 +14,7 @@ export const styles = StyleSheet.create({
     },
     feedImage:{
        flex: 1,
-       width:'100%',
-       resizeMode:'cover'
+       resizeMode:'contain'
        
     }
 

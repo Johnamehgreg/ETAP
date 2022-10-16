@@ -4,24 +4,47 @@ import { styles } from './InstaStoryStyles'
 import { LinearGradient } from 'expo-linear-gradient';
 import Scale from '../../constants/Scale';
 import { Feather } from '@expo/vector-icons';
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { GetUser } from '../../queryFunctionHook/main/usersQuery';
+import { storeUser } from '../../ReduxStore';
 
 
 
 
 
 const InstaStoryList: React.FC = () => {
+    const dispatch = useDispatch()
+
+    const userList = useSelector((state: any) => state.userList.data)
+
+
+    const { userData, isFetched, isSuccess } = GetUser()
+
+    const checkDataFetched = () => {
+        if (isFetched && isSuccess) {
+            
+            dispatch((storeUser(userData)))
+
+        }
+    }
+
+
+    useEffect(() => {
+        checkDataFetched()
+        
+      }, [userData])
+
     return (
         <>
             <FlatList
-                data={list}
+                data={userList}
                 contentContainerStyle={styles.flatListContainer}
-                ListHeaderComponent={() =>
+                ListHeaderComponent={(item) =>
                     <InstaStoryHeader
                         imageUrl='https://i.pinimg.com/564x/49/23/44/492344e1883f0b4b5ba44b6a45ee69b9.jpg' />}
                 showsHorizontalScrollIndicator={false}
-                renderItem={() => <InstaStoryListRender name='Rejoice' imageUrl='https://i.pinimg.com/564x/49/23/44/492344e1883f0b4b5ba44b6a45ee69b9.jpg' />}
+                renderItem={({item}) => <InstaStoryListRender item={item} />}
                 horizontal
             />
 
@@ -35,7 +58,7 @@ export default InstaStoryList
 
 
 
-const InstaStoryListRender = (props: { imageUrl: string, name: string }) => {
+const InstaStoryListRender = (props: { item:any }) => {
     return (
         <TouchableOpacity
             style={styles.container}
@@ -45,7 +68,7 @@ const InstaStoryListRender = (props: { imageUrl: string, name: string }) => {
                 style={styles.renderContainerAvatar}
             >
                 <View style={styles.innerAvatar}>
-                    <Image source={{ uri: props.imageUrl }}
+                    <Image source={{ uri: 'https://i.pinimg.com/564x/49/23/44/492344e1883f0b4b5ba44b6a45ee69b9.jpg'}}
                         style={styles.avatarImage}
                         resizeMode='cover'
                     />
@@ -55,7 +78,7 @@ const InstaStoryListRender = (props: { imageUrl: string, name: string }) => {
             <Text
                 style={styles.nameText}
             >
-                {props.name}
+                {props.item.username}
             </Text>
         </TouchableOpacity>
     )

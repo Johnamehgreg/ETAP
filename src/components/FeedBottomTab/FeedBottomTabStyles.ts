@@ -34,7 +34,11 @@ export const styles = StyleSheet.create({
     },
 
     icons:{
-        marginRight:Scale(10)
+        marginRight:Scale(10),
+        height:Scale(30),
+        width:Scale(30),
+        alignItems:'center',
+        justifyContent:'center',
     },
 
     viewText:{

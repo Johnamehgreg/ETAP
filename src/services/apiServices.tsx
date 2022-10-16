@@ -17,7 +17,7 @@ export default {
     },
     users:{
         getUsers: () => {
-            return server.get(`${BASE_URL}/users?limit=5`)
+            return server.get(`${BASE_URL}/users`)
         },
 
         getUserById: (id:number) => {

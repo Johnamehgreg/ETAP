@@ -1,48 +1,55 @@
 import { View, Image, FlatList, Text } from 'react-native'
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { styles } from './FeedListStyle'
 import { Entypo } from '@expo/vector-icons';
 import Scale, { verticalScale } from '../../constants/Scale'
 import FeedHeader from '../FeedHeader/FeedHeader';
 import FeedBottomTab from '../FeedBottomTab/FeedBottomTab';
 import DoubleClick from '../../libs/doubleTab'
+import { onLike } from '../../services/appServices'
+import { SharedElement } from 'react-navigation-shared-element';
+
+
+
 
 
 
 interface Props {
     item: any,
+    navigation: any,
 }
 
-const FeedList: React.FC<Props> = ({ item,  }) => {
+const FeedList: React.FC<Props> = ({ item, navigation }) => {
 
     const [isLOading, setisLOading] = useState(false)
     return (
         <View>
             <FeedHeader
-            item={item}
+                item={item}
                 onMenuPress={() => alert('alert')}
             />
             <DoubleClick
                 singleTap={() => {
-                    console.log("single tap");
+                    navigation.navigate('detail_screen', { item })
                 }}
-                doubleTap={() => {
-                    alert('like')
-                }}
-                delay={200}
+                doubleTap={() => onLike(item.id)}
+                delay={50}
             >
-                <View
-                    style={styles.imageWrapper}
-                >
-                    <Image
-                        onLoad={() => {
-                            
-                        }}
-                        style={styles.feedImage}
-                        resizeMode='cover'
-                        source={{ uri: item?.image}}
-                    />
-                </View>
+                 <SharedElement style={styles.imageWrapper} id={item.id}>
+                
+                   
+                        <Image
+                            onLoad={() => {
+
+                            }}
+                            style={styles.feedImage}
+                            resizeMode='cover'
+                            source={{ uri: item?.image }}
+                        />
+
+
+                </SharedElement>
+
 
             </DoubleClick>
             <FeedBottomTab item={item} />
