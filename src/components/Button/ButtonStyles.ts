@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Scale(10),
-        shadowColor: 'red',
+        shadowColor: 'black',
         shadowOffset: {width: 5, height: 10},
         shadowOpacity: 1,
         elevation: 10,

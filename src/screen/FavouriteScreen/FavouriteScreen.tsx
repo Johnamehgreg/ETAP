@@ -4,6 +4,10 @@ import FeedList from "../../components/FeedList/FeedList"
 import { styles } from './FavourScreenStyle'
 import { FlatList } from 'react-native-gesture-handler'
 import { useDispatch, useSelector } from 'react-redux'
+import * as Updates from 'expo-updates';
+
+
+
 const { height, width } = Dimensions.get('window');
 
 
@@ -25,7 +29,7 @@ const FavouriteScreen = ({navigation}) => {
       <FlatList
         bounces={false}
         ListEmptyComponent={() => <EmptyList />}
-        keyExtractor={(item: any) => item.key}
+        keyExtractor={(item: any) => item.id}
         data={favorites}
         renderItem={({ item }) => <FeedList navigation={navigation} item={item} />}
       />

@@ -11,12 +11,17 @@ import React from 'react';
 
 
 
+
+
 const queryClient = new QueryClient();
 
 export const App = () => {
 
 
+  
+
   return (
+    
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>

@@ -12,7 +12,15 @@ interface Props {
 }
 
 const FeedHeader:React.FC<Props> = ({onMenuPress, item}) => {
-
+    const reduceText = () => {
+        let text: string;
+        if(item.title.length > 20){
+            return `${item.title.slice(0, 30)}...`;
+        }else{
+            return item.title
+        }
+         
+    }
     return (
         <View
             style={styles.feedHeader}
@@ -25,7 +33,8 @@ const FeedHeader:React.FC<Props> = ({onMenuPress, item}) => {
                 <View
                     style={styles.feednameWrapper}
                 >
-                    <Text>{item?.title}</Text>
+                    
+                    <Text>{reduceText()}</Text>
                 </View>
             </View>
 

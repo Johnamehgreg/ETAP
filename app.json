@@ -7,8 +7,10 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     
+    
+    
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 60000
     },
     "assetBundlePatterns": [
       "**/*"

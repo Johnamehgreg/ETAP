@@ -1,5 +1,5 @@
 import { View, Image, FlatList, Text, Animated } from 'react-native'
-import React, { useState, useRef } from 'react'
+import React, {memo, useState, useRef, useMemo } from 'react'
 import { styles } from './FeedListStyle'
 import { Entypo } from '@expo/vector-icons';
 import Scale, { verticalScale } from '../../constants/Scale'
@@ -41,6 +41,8 @@ const FeedList: React.FC<Props> = ({ item, navigation }) => {
             }).start()
         }, 4000)
     }
+
+    
     return (
         <View key={item.id}>
             <FeedHeader
@@ -92,6 +94,6 @@ const FeedList: React.FC<Props> = ({ item, navigation }) => {
     )
 }
 
-export default FeedList
+export default memo(FeedList)
 
 

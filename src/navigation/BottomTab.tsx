@@ -5,7 +5,7 @@ import Scale from '../constants/Scale';
 import HomeScreen from '../screen/HomeScreen/HomeScreen';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
-import { AntDesign} from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { styles } from './BottomTabStyles';
 import FavouriteScreen from '../screen/FavouriteScreen/FavouriteScreen';
 
@@ -84,6 +84,7 @@ function MyTabBar({ state, descriptors, navigation }) {
 
         return (
           <TouchableOpacity
+            key={index.toString()}
             accessibilityRole="button"
             accessibilityState={isFocused ? { selected: true } : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
@@ -95,14 +96,14 @@ function MyTabBar({ state, descriptors, navigation }) {
               label === 'Home' && (
                 <>
 
-                {
-                  isFocused ?
-                  <MaterialIcons name='home-filled' size={Scale(32)} />
-                  :
-                  <Octicons name='home' size={Scale(28)} />
+                  {
+                    isFocused ?
+                      <MaterialIcons name='home-filled' size={Scale(32)} />
+                      :
+                      <Octicons name='home' size={Scale(28)} />
 
-                }
-                
+                  }
+
                 </>
               )
             }
@@ -110,12 +111,12 @@ function MyTabBar({ state, descriptors, navigation }) {
               label === 'Favourite' && (
                 <>
                   {
-                  isFocused ?
-                  <AntDesign name='heart' size={Scale(30)} />
-                  :
-                  <AntDesign name='hearto' size={Scale(30)} />
+                    isFocused ?
+                      <AntDesign name='heart' size={Scale(30)} />
+                      :
+                      <AntDesign name='hearto' size={Scale(30)} />
 
-                }
+                  }
                 </>
               )
             }

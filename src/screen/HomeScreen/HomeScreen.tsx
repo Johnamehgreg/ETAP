@@ -55,10 +55,11 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
         isFetched ?
           <FlatList
             bounces={false}
-            keyExtractor={(item: any) => item.key}
+            initialNumToRender={2}
+            keyExtractor={(item: any) => item.id}
             ListHeaderComponent={() => <InstaStoryList />}
             data={productList}
-            renderItem={({ item }) => <FeedList navigation={navigation} item={item} />}
+            renderItem={({ item }) => <FeedList  navigation={navigation} item={item} />}
           />
           :
 

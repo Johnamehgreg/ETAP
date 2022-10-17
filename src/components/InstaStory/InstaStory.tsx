@@ -74,7 +74,7 @@ const InstaStory = (props: { showStory: boolean, handleShowStory: (value: boolea
                         initialScrollIndex={index}
                         data={stories}
                         horizontal
-                        keyExtractor={(item: any) => item.key}
+                        keyExtractor={(item: any) => item.id}
                         showsHorizontalScrollIndicator={false}
                         pagingEnabled
                         bounces
@@ -218,27 +218,7 @@ const Indicator: React.FC<IndicatorProps> = ({ data, setindex, index }) => {
     const afterIndex = (i: any) => {
         if (index > i || index === i) return true
     }
-    const Interpolation = (durration: number, currentTime: number) => {
-        let y1 = 0
-        let y2 = 100
-        let x1 = 0
-        let x2 = durration
-        let x = currentTime
-
-        let slope1 = y2 - y1
-        let slope2 = x2 - x1
-
-        let s1 = x - x1
-
-        let slope = slope1 / slope2
-
-        let s2 = slope * s1 + y1
-
-
-        return s2
-
-    }
-
+  
     const next = () => {
         if (index === data.length - 1) {
             return;
@@ -259,18 +239,6 @@ const Indicator: React.FC<IndicatorProps> = ({ data, setindex, index }) => {
         }
 
     }
-
-
-
-
-
-
-
-    useEffect(() => {
-
-    }, []);
-
-
 
 
     return (

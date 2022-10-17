@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View, TouchableWithoutFeedback } from "react-native";
 
 export default class DoubleClick extends Component {
   constructor(props) {
@@ -29,19 +29,23 @@ export default class DoubleClick extends Component {
         this.timer && clearTimeout(this.timer);
 
         this.props.doubleTap ? this.props.doubleTap() : null;
-
-        this.firstPress = true;
+        setTimeout(() => {
+          this.firstPress = true;
+        }, 2000)
+        
       }
     }
   };
 
   render() {
     return (
-      <TouchableOpacity
+      <TouchableWithoutFeedback
       style={{position:'relative'}} 
       onPress={this._onPress}>
+        <View>
         {this.props.children}
-      </TouchableOpacity>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 
